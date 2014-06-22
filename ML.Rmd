@@ -1,0 +1,17 @@
+Using the caret package we are going to build a tree.
+```{r}
+library(rattle)
+library(rpart)
+library(caret)
+setwd("E:/Coursera/Machine Learning/assignment")
+dataml<-read.csv("pml-training.csv", header=TRUE)
+dataml2<-dataml[,5:160]
+intrain<-createDataPartition(y=dataml2$classe, p=0.05, list=FALSE)
+training<-dataml2[intrain,]
+testing<-dataml2[-intrain,]
+```
+I could not manage to run the train function in time
+```{r eval=FALSE}
+modfit<-train(classe~.,method="rpart", data=training)
+fancyRpartPlot(modfit$finalModel)
+```
